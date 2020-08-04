@@ -13,12 +13,13 @@ const dayPart = $('.container');
 const dayHours = ['9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'];
 const twentyfourhourClock = ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
 
+
 //builds the work day scheduler container
 
 for (var i = 0; i < dayHours.length; i++) {
     const rowDiv = $("<div class= 'row time-block'>").attr("id", twentyfourhourClock[i]);
     const hourDiv = $("<div class='hour col-md-1'>");
-    const txtDiv = $("<textarea class='col-md-10 description'>");
+    const txtDiv = $("<textarea class='col-md-10 description' id='userText'>");
     const btnDiv = $("<button type='button' class='btn saveBtn col-md-1 fas fa-save'>");
 
     dayPart.append(rowDiv);
@@ -34,14 +35,10 @@ for (var i = 0; i < dayHours.length; i++) {
 }
 
 
-
-
-
-
 function businessHours() {
     var rightNow = moment().hours()
     $('.time-block').each(function () {
-        const hourPool = parseInt($(this).attr("id").split(" ")[0]);
+        var hourPool = parseInt($(this).attr("id").split(" ")[0]);
 
         if (hourPool < rightNow) {
             $(this).addClass("past");
@@ -54,12 +51,24 @@ function businessHours() {
             $(this).removeClass("present");
             $(this).addClass("future");
         }
-       
+
     });
-   
+
 }
 businessHours();
-//var checkTime = setInterval(businessHours, 15000);
+
+if (window.localStorage) {
+    var txtUser = document.getElementById('userText');
+    txtUser.value = localStorage.getItem('userText');
+
+    txtUser.addEventListener('button', function() {
+        localStorage.setItem('userText', txtUser.value);
+    }, false);
+}
+
+
+
+
 
 
 
