@@ -47,16 +47,16 @@ function businessHours() {
             $(this).addClass("past");
 
         } else if (hourPool === rightNow) {
-            $(this).removeclass("past");
-            $(this).addclass("present");
+            $(this).removeClass("past");
+            $(this).addClass("present");
         } else {
-            $(this).removeclass("past");
-            $(this).removeclass("present");
-            $(this).addclass("future");
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
         }
-
+       
     });
-
+   
 }
 businessHours();
 //var checkTime = setInterval(businessHours, 15000);
