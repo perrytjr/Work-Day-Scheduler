@@ -57,30 +57,15 @@ function businessHours() {
 }
 businessHours();
 
-/*saveButton.on("click", function() {
-    
-    var goal = document.querySelector("#userText").value;
-    localStorage.setItem("#userText", goal);
-    
 
-});*/
-if (window.localStorage) {
-    
-    var txtUser = document.getElementById('userText');
-    txtUser.value = localStorage.getItem('userText');
+$(".saveBtn").on("click", function () {
+    //get nearby values.
+    console.log(this);
+    var text = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
 
-    addEventListener('button', function() {
-        localStorage.setItem('userText', txtUser.value);
-    }, false);
-    
-}
-
-
-
-/*<div class="col-md-1 hour">
-        9AM
-      </div>
-      <textarea class="col-md-10 description">
-          </textarea>
-      <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-    </div>*/
+    //set items in local storage.
+    localStorage.setItem(time, text);
+    console.log(text, time)
+});
+var savedDataVariable = JSON.parse(localStorage.getItem("text"));
