@@ -12,7 +12,7 @@ const dayPart = $('.container');
 // hour variables
 const dayHours = ['9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'];
 const twentyfourhourClock = ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
-
+var saveButton = document.querySelector(".btn");
 
 //builds the work day scheduler container
 
@@ -57,43 +57,25 @@ function businessHours() {
 }
 businessHours();
 
+/*saveButton.on("click", function() {
+    
+    var goal = document.querySelector("#userText").value;
+    localStorage.setItem("#userText", goal);
+    
+
+});*/
 if (window.localStorage) {
+    
     var txtUser = document.getElementById('userText');
     txtUser.value = localStorage.getItem('userText');
 
-    txtUser.addEventListener('button', function() {
+    addEventListener('button', function() {
         localStorage.setItem('userText', txtUser.value);
     }, false);
+    
 }
 
 
-
-
-
-
-
-/*
-
-hours.forEach(function (hour) {
-    // Build the row
-    const rowDiv = $('<div>');
-
-    rowDiv.addClass('row');
-
-    // build the hour div
-    const hourDiv = $('<div>');
-    hourDiv.attr('id', 'hour-' + hour);
-    const currentHour = hour === 12 ? 12 : hour % 12;
-    const amOrPm = (hour > 11) ? 'PM' : 'AM';
-    hourDiv.text(currentHour + ' ' + amOrPm);
-    hourDiv.addClass('')
-    rowDiv.append(hourDiv);
-    // build the input
-        // append to row div
-    //build the save
-        // append to row div
-    container.append(rowDiv);
-});*/
 
 /*<div class="col-md-1 hour">
         9AM
